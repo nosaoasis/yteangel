@@ -41,6 +41,7 @@ INSTALLED_APPS = [
 
     # my apps
     'yteAdmin',
+    'publicApp',
 ]
 
 MIDDLEWARE = [
