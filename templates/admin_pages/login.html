@@ -11,13 +11,14 @@ Login
       <p class="font-bold text-2xl text-gray-700">Admin Login</p>
 
       <form class="" method="POST" action="">
+        {% csrf_token %}
         <div class="flex flex-col mt-4">
           <label class="sr-only" for"username">Username</label>
-          <input id="username" class="bg-gray-100 mt-2 border border-gray-600 rounded-lg py-2 px-4 w-full" placeholder="Username">
+          <input id="username" name="username" class="bg-gray-100 mt-2 border border-gray-600 rounded-lg py-2 px-4 w-full" placeholder="Username">
         </div>
         <div class="flex flex-col">
           <label class="sr-only" for"password">Password</label>
-          <input id="password" type="password" class="bg-gray-100 mt-2 border border-gray-600 rounded-lg py-2 px-4 w-full" placeholder="Password">
+          <input id="password" name="password" type="password" class="bg-gray-100 mt-2 border border-gray-600 rounded-lg py-2 px-4 w-full" placeholder="Password">
         </div>
 
         <button type="submit" class="border border-white bg-gray-600 text-gray-100 rounded-lg py-2 px-4 w-full mt-6">Login</button>
@@ -27,3 +28,4 @@ Login
 
   </div>
 {% endblock content %}
+

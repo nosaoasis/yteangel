@@ -1,4 +1,5 @@
 {% extends 'admin_pages/admin_access.html' %}
+{% load static %}
 
 {% block title %} 
 Register
@@ -10,32 +11,34 @@ Register
     <div class="bg-white w-10/12 md:w-6/12 flex flex-col items-center justify-center py-6">
       <p class="font-bold text-2xl text-gray-700">Admin Register</p>
 
-      <form class="" method="POST" action="">
+      <form class="" method="POST" action="{% url 'create' %}">
+        {% csrf_token %}
+
         <div class="flex flex-col md:flex-row mt-4">
           <div class="md:pr-2">
             <label class="sr-only" for"username">First Name</label>
-            <input id="first_name" type="text" class="bg-gray-100 mt-2 border border-gray-600 rounded-lg py-2 px-4 w-full" placeholder="First Name">
+            <input id="first_name" name="first_name" type="text" class="bg-gray-100 mt-2 border border-gray-600 rounded-lg py-2 px-4 w-full" placeholder="First Name">
           </div>
           <div class="md:pl-2">
             <label class="sr-only" for"last_name">Last Name</label>
-            <input id="password" type="text" class="bg-gray-100 mt-2 border border-gray-600 rounded-lg py-2 px-4 w-full" placeholder="Last Name">
+            <input id="lastname" name="last_name" type="text" class="bg-gray-100 mt-2 border border-gray-600 rounded-lg py-2 px-4 w-full" placeholder="Last Name">
           </div>
         </div>
 
         
         <div class="flex flex-col">
           <label class="sr-only" for"email">Email</label>
-          <input id="email" type="email" class="bg-gray-100 mt-2 border border-gray-600 rounded-lg py-2 px-4 w-full" placeholder="Email">
+          <input id="email" name="email" type="email" class="bg-gray-100 mt-2 border border-gray-600 rounded-lg py-2 px-4 w-full" placeholder="Email">
         </div>
 
         <div class="flex flex-col md:flex-row">
           <div class="md:pr-2">
             <label class="sr-only" for"password">Password</label>
-            <input id="password" type="password" class="bg-gray-100 mt-2 border border-gray-600 rounded-lg py-2 px-4 w-full" placeholder="Password">
+            <input id="password" name="password" type="password" class="bg-gray-100 mt-2 border border-gray-600 rounded-lg py-2 px-4 w-full" placeholder="Password">
           </div>
           <div class="md:pl-2">
             <label class="sr-only" for"confirm_password">Password</label>
-            <input id="confirm_password" type="password" class="bg-gray-100 mt-2 border border-gray-600 rounded-lg py-2 px-4 w-full" placeholder="Confirm Password">
+            <input id="confirm_password" name="password_2" type="password" class="bg-gray-100 mt-2 border border-gray-600 rounded-lg py-2 px-4 w-full" placeholder="Confirm Password">
           </div>
         </div>
 
@@ -43,11 +46,11 @@ Register
         <div class="flex flex-col md:flex-row">
           <div class="md:pr-2">
             <label class="sr-only" for"admin_role">Admin Role</label>
-            <input id="admin_role" type="text" class="bg-gray-100 mt-2 border border-gray-600 rounded-lg py-2 px-4 w-full" placeholder="Admin Role">
+            <input id="admin_role" name="admin_role" type="text" class="bg-gray-100 mt-2 border border-gray-600 rounded-lg py-2 px-4 w-full" placeholder="Admin Role">
           </div>
           <div class="md:pl-2">
             <label class="sr-only" for"register_token">Token</label>
-            <input id="register_token" type="text" class="bg-gray-100 mt-2 border border-gray-600 rounded-lg py-2 px-4 w-full" placeholder="Token">
+            <input id="register_token" name="token" type="text" class="bg-gray-100 mt-2 border border-gray-600 rounded-lg py-2 px-4 w-full" placeholder="Token">
           </div>
         </div>
 
@@ -58,3 +61,7 @@ Register
 
   </div>
 {% endblock content %}
+
+{% block script %}
+  <script type="text/javascript" src="{% static 'js/register.js' %}"></script>
+{% endblock script %}
